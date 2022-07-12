@@ -1,6 +1,6 @@
 jQuery(document).ready(function($) {
-    jQuery('.plans-slider').slick({
-        slidesToShow: 4,
+    jQuery('.banner-slider').slick({
+        slidesToShow: 1,
         slidesToScroll: 1,
         infinite: true,
         dots: true,
