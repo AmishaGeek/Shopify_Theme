@@ -7,6 +7,7 @@ jQuery(document).ready(function($) {
         arrows: true,
         autoplay: true,
         autoplaySpeed: 2000,
+        responsive: [{
                 breakpoint: 992,
                 settings: {
                     slidesToShow: 2,
