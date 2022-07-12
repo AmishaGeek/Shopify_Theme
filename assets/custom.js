@@ -7,9 +7,6 @@ jQuery(document).ready(function($) {
         arrows: true,
         autoplay: true,
         autoplaySpeed: 2000,
-        prevArrow: '<button class="slide-arrow prev-arrow"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
-        nextArrow: '<button class="slide-arrow next-arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',
-        responsive: [{
                 breakpoint: 992,
                 settings: {
                     slidesToShow: 2,
