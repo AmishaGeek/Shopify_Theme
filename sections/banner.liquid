@@ -1,63 +1,15 @@
 <!-- <script src="https://apps.elfsight.com/p/platform.js" defer></script>
 <div class="elfsight-app-0b782d74-b56a-45fd-8a6c-983d9742b29e"></div> -->
-{% for block in section.blocks %}  
-          <section class="banner-img" style="background-image:url('{{block.settings.image | img_url: 'master'}}')"> 
-            <div class="container">
-              <div class="row">
-                <div class="info">
-                  <h1>{{ block.settings.banner-title }}</h1>
-                  <p>{{ block.settings.banner-content }}</p>
-                 </div>
-              </div>
-            </div>    
-           </section>
-  {% endfor %}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{% schema %}
-  {
-    "name": "Banner",
-    "settings": [],
-"blocks": [
-			{
-				"type": "text",
-				"name": "Slide",
-				"settings": [
-					
-					{
-						"type": "image_picker",
-						"id": "image",
-						"label": "BackGround Image"
-					},
-					{
-						"type": "text",
-						"id": "banner-title",
-						"label": "Title"
-					},
-					{
-						"type": "textarea",
-						"id": "banner-content",
-						"label": "Content"
-					}
-					
-				]
-			}
-		]
-  }
-{% endschema %}
-
-
-{% javascript %}
-{% endjavascript %}
+{% for block in section.blocks %}
+<section class="banner-img" style="background-image:url('{{block.settings.image | img_url: 'master'}}')">
+    <div class="container">
+        <div class="row">
+            <div class="info">
+                <h1>{{ block.settings.banner-title }}</h1>
+                <p>{{ block.settings.banner-content }}</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %} {% schema %} { "name": "Banner", "settings": [], "blocks": [ { "type": "text", "name": "Slide", "settings": [ { "type": "image_picker", "id": "image", "label": "BackGround Image" }, { "type": "text", "id": "banner-title", "label": "Title"
+}, { "type": "textarea", "id": "banner-content", "label": "Content" } ] } ] } {% endschema %} {% javascript %} {% endjavascript %}
