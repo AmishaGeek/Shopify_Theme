@@ -11,7 +11,9 @@
 
 {{ 'slick-theme.css' | asset_url | stylesheet_tag }}
   {{ 'slick.css' | asset_url | stylesheet_tag }}
+ {{ 'slick.min.js' | asset_url | script_tag }}
  {{ 'custom.js' | asset_url | script_tag }}
+
   {{ content_for_header }} <!-- Header hook for plugins -->
   {{ 'application.scss.css' | asset_url | stylesheet_tag }}
   {{ 'style.css' | asset_url | stylesheet_tag }}
