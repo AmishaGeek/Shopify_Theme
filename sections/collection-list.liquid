@@ -1,0 +1,51 @@
+
+
+
+
+
+
+{% for list in section.settings.collection_list %}
+	{{list.title}}
+<a href="{{list.url}}">{{list.url}}</a>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% schema %}
+  {
+    "name": "Collection",
+    "settings": [
+{
+  "type": "collection",
+  "id": "collection",
+  "label": "Collection"
+},
+{
+  "type": "collection_list",
+  "id": "collection_list",
+  "label": "Collections list",
+  "limit": 8
+},
+{
+  "type": "blog",
+  "id": "blog",
+  "label": "Blog"
+}]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

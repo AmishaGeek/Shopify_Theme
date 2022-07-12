@@ -1,0 +1,103 @@
+<!-- Liquid Filters -->
+{%  assign str='test' %}
+{% unless str!='' %}
+	{{'hhh'}}
+{% endunless %}
+
+<!-- {{ "Ground control to Major Tom." | truncate: 5,"" }} -->
+<!-- {{ "Ground control to Major Tom." | truncatewords: 0,"" }} -->
+<!-- {{ "now" | date: "%Y-%m-%d %H:%M" }}
+ -->
+<!-- Variable -->
+{%  assign array_str = "PHP,C,CSS,tttt" %}
+
+<!-- Split is a filter -->
+{% assign array = array_str | split: "," %}
+<!-- {{ array | join:',' | upcase }} -->
+
+<!-- {% for	i in array %}
+	{%  if i.size <= 3  %}
+	<h1>{{ i }}</h1>
+	{% endif %}
+{% endfor %} -->
+
+
+{% assign number = 2 %}
+<!-- {{ number | plus: 5 }} -->
+
+
+<!-- {{array | newline_to_br}} -->
+
+{% assign beatles = "John, Paul, George, Ringo" | split: "," %}
+<!-- {{ beatles | join: " and " }} 
+{{ beatles | reverse | join:"," }}
+{{ beatles | slice: 1, 2 }} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Collection -->
+{% assign collection_variable = collections['all'] %}
+<ul class="product_list">
+  {% for list in collection_variable.products offset:0 %} 
+    {%  if forloop.first %}
+          {{ 'This Is First Product' | prepend:'appendent text'}}
+    {%  endif %}
+
+    {%  if forloop.last %}
+          {{ 'This Is Last Product' }}
+    {%  endif %}
+<!--   {% if forloop.index == 1 %}
+  {{'length'}}
+  {% endif %} -->
+  
+  {% unless section.settings.sold_out_products != false and list.available != true %}
+
+    <li>
+      <div class="featured-products-info">
+         <div>
+             {% for image in list.images limit:1%} 
+                  <img width="200" height="200" src="{{ image.src | img_url }}">
+              {% endfor %}
+          </div>
+         <a href="{{ list.url }}">
+			<h2 class="product__title" style="color:{{ settings.product_clr}}">{{ list.title }}</h2>
+          </a>
+          <span class="price">Price {{ list.price | money }}</span>
+        </div>
+      </li>
+  {% endunless %}
+
+  {% endfor %}
+</ul>
+
+
+
+{% schema %}
+  {
+    "name": "Section name",
+    "settings": [
+		{
+          "type": "checkbox",
+          "id": "sold_out_products",
+          "label": "Hide Sold Out Products"
+		}
+	]
+
+  }
+{% endschema %}
+
+

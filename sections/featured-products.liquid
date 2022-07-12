@@ -1,0 +1,55 @@
+<div class="container mt-5">
+  <h3>Featured Products</h3>
+    <div class="row">
+      {% for list in section.settings.product_list %}
+      <div class="col-lg-3">
+      	 <div class="card">
+
+                <div class="text-center">
+
+                  {% for image in list.images limit:1%} 
+                  
+                  		<img src="{{ image.src | img_url }}" width="250">
+
+              		{% endfor %}
+                </div>
+              
+                <div class="text-center">
+					
+                    <h5>{{ list.title }}</h5>
+              
+                  <span class="text-success">{{ list.price | money }}</span>
+                    
+
+                </div>
+                
+            </div>
+      </div>      
+      {% endfor %}
+  </div>
+</div>
+
+
+
+{% schema %}
+  {
+    "name": "Featured Products",
+    "settings": [
+{
+  "type": "product_list",
+  "id": "product_list",
+  "label": "Products",
+  "limit": 12
+}
+
+
+
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

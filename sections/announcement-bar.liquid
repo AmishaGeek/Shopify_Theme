@@ -1,0 +1,57 @@
+{% if section.settings.show_announcement %}
+<div class="announcement">
+  <p class="announcement_text">{{ section.settings.announcement_text }}</p>
+	
+</div>	
+
+{% endif  %}
+
+<style>
+ .announcement {
+      text-align: center;
+   background: {{ section.settings.announcement_bg_clr }};
+      padding: 10px;
+  }
+  p.announcement_text {
+      color: {{ section.settings.announcement_txt_clr }};
+      font-size: 20px;
+  }
+</style>
+
+
+
+{% javascript %}
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": false
+    },
+	{
+		"type": "text",
+		"id": "announcement_text",
+		"label": "Text",
+		"default": "Free shipping on orders $35+ 🚀"
+	},
+	{
+		"type": "color",
+		"id": "announcement_bg_clr",
+		"label": "BackGround Color",
+		"default": "#910f3f"
+	},
+	{
+		"type": "color",
+		"id": "announcement_txt_clr",
+		"label": "Text Color",
+		"default": "#FFFFFF"
+	}
+  ]
+}
+{% endschema %}
+

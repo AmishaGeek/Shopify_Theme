@@ -1,0 +1,88 @@
+<div class="site-menu">
+	<div class="container">
+    <div class="row">
+      <div class="col-lg-2">
+        <div>
+        	<a href="https://amishageek435.myshopify.com/">
+              <img src="https://cdn.shopify.com/s/files/1/0611/7244/9514/files/CRAVE_95cb960d-0933-4ba8-b51a-3c4853b96029_70x.png?v=1642089232"? >
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-10">
+        <ul class="menu-list">
+          {% for link in linklists.main-menu.links %}
+              <li><a href="{{ link.url }}">{{link.title}}</a>
+            {%- if link.links != blank -%}
+          <ul>
+            {%- for child_link in link.links -%}
+              <li>
+                <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                  {{ child_link.title }}
+                </a>
+
+                {%- if child_link.links != blank -%}
+                  <ul>
+                    {%- for grandchild_link in child_link.links -%}
+                      <li>
+                        <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                          {{ grandchild_link.title }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}</li>
+          {% endfor %}
+          
+        </ul>
+ 	</div>
+  </div>
+  </div>
+</div>
+
+
+<style>
+  .site-menu {
+    background:{{ section.settings.header_bg_clr }};
+    height: 80px;
+}
+  ul.menu-list {
+    display: flex;
+    list-style: none;
+}
+  ul.menu-list li {
+    padding-right: 30px;
+}
+ul.menu-list li a{
+    text-decoration:none;
+  color:{{ section.settings.header_txt_clr }}
+}
+  
+</style>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    
+	{
+		"type": "color",
+		"id": "header_bg_clr",
+		"label": "BackGround Color",
+		"default": "#f2efdd"
+	},
+	{
+		"type": "color",
+		"id": "header_txt_clr",
+		"label": "Text Color",
+		"default": "#f2efdd"
+	}
+
+  ]
+
+}
+{% endschema %}

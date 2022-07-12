@@ -1,0 +1,120 @@
+<!-- 
+<div class="container">
+  <div class="row">
+  
+
+
+{% for collection in collections %}
+  
+    <div class="col-lg-6">
+      <a href="{{ collection.url }}">
+      <h3>{{collection.title}}</h3>
+        <img src="{{collection.image | img_url:'large'}}" ></a>
+    </div>
+{% endfor %}
+
+
+  </div>
+</div> -->
+
+
+{% assign collection = section.settings.collection %}
+
+{% assign products = collections[collection] %}
+
+
+{%- assign product_par_row = 2 -%}
+
+{% case section.settings.products_par_row %}
+  	{% when 4 %}
+		{%- assign product_par_row = 3 -%}
+     {% when 3 %}
+		{%- assign product_par_row = 4 -%}
+     {% when 2 %}
+        {%- assign product_par_row = 6 -%}
+{% endcase  %}
+
+
+  {%- assign product_limit = section.settings.products_par_row | times: section.settings.number_of_row -%}
+
+<div class="container mt-5">
+  <h3>Products By Collection</h3>
+    <div class="row">
+	
+  {% for list in products.products offset:0  limit:product_limit %} 
+        <div class="col-lg-{{product_par_row}}">
+
+            <div class="card">
+
+                <div class="text-center">
+
+                  {% for image in list.images limit:1%} 
+                  
+                  		<img src="{{ image.src | img_url }}" width="250">
+
+              		{% endfor %}
+                </div>
+              
+                <div class="text-center">
+					
+                    <h5>{{ list.title }}</h5>
+              
+                  <span class="text-success">{{ list.price | money }}</span>
+                    
+
+                </div>
+                
+            </div>
+            
+        </div>
+
+  {% endfor %}
+        
+    </div>
+       
+
+   </div>
+
+
+
+{% schema %}
+  {
+    "name": "Products By Collection",
+    "settings": [
+{
+  "type": "collection",
+  "id": "collection",
+  "label": "Collection"
+},
+{
+
+  "type": "range",
+  "id": "products_par_row",
+  "min": 2,
+  "max": 4,
+  "step": 1,
+  "label": "Product Par Row",
+  "default": 3
+},
+{
+
+  "type": "range",
+  "id": "number_of_row",
+  "min": 1,
+  "max": 4,
+  "step": 1,
+  "label": "Row",
+  "default": 1
+}
+
+
+
+]
+  }
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
